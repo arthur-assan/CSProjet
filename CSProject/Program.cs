@@ -49,7 +49,36 @@ namespace CSProject
         }
 
     }
-        class Program
+
+    class Manager : Staff
+    {
+        // Fields
+        private const float managerHourlyRate = 50;
+
+        // Properites
+        public int Allowance { get; private set; }
+
+        // Constructors
+        public Manager(string name) : base(name, managerHourlyRate) { }
+
+        //Method
+        public override void CalculatePay()
+        {
+            base.CalculatePay();
+            Allowance = 1000;
+            if (HoursWorked > 160)
+                TotalPay = BasicPay + Allowance;
+        }
+        public override string ToString()
+        {
+            return "\nNameOfStaff = " + NameOfStaff + "\nmanagerHourlyRate = "
+            + managerHourlyRate + "\nHoursWorked = " + HoursWorked + "\nBasicPay = "
+            + BasicPay + "\nAllowance = " + Allowance + "\n\nTotalPay = " + TotalPay;
+        }
+    }
+
+
+    class Program
     {
         static void Main(string[] args)
         {
